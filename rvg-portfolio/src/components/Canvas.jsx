@@ -10,7 +10,10 @@ export default class Canvas extends React.Component
         var renderer = new THREE.WebGLRenderer({alpha: true}); //creating alpha buffer
         renderer.setSize( window.innerWidth, window.innerHeight );
         renderer.setClearAlpha(0.0); //Setting clear alpha
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
         this.mount.appendChild( renderer.domElement );
+
+        window.addEventListener('resize', this.updateDimensions); //resizing window
       
         //Add cube
         var geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -30,20 +33,37 @@ export default class Canvas extends React.Component
         camera.position.y = 2;
         camera.lookAt(0,0,0)
         
+        const clock = new THREE.Clock();
+
         //Animation loop (kinda like a game loop)
         var animate = function () {
+            const deltaTime = clock.getDelta();
+
             requestAnimationFrame( animate );
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.005;
-            cube.rotation.z += 0.01;
+            const speed = 1000;
+            cube.rotation.x += 0.001 * deltaTime * speed;
+            cube.rotation.y += 0.005 * deltaTime * speed;
+            cube.rotation.z += 0.001 * deltaTime * speed;
             renderer.render( scene, camera );
         };
-
         animate();
     }
+
+    componentWillUnmount() { //Gets called when unmounted
+        window.removeEventListener('resize', this.updateDimensions);
+    }
+
+    updateDimensions() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    }
+
     render() {
         return (
-            <div className='fixed origin-top-left' ref={ref => (this.mount = ref)} />
+            <div className='fixed w-full h-full origin-top-left block' ref={ref => (this.mount = ref)} />
         )
     }
 }
