@@ -26,7 +26,7 @@ class NameParagraph extends React.Component {
     {
         const text = textArray[this.state.textIdx]
         return (
-            <div className='flex justify-center mx-auto'>
+            <div className='flex justify-center mx-auto text-white'>
                 <div>-</div>
                 <div className='w-52'>
                     <Transition as='p'
