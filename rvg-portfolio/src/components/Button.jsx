@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes, { func } from 'prop-types'
+import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 const styles = {
@@ -82,9 +82,8 @@ Button.defaultProps = {
     text: "medium"
 }
 
-Button.PropTypes = {
+Button.propTypes = {
     onClick: PropTypes.func,
-
     shape: PropTypes.oneOf(["rectangular", "square"]),
     size: PropTypes.oneOf(["small", "medium", "large"]),
     variant: PropTypes.oneOf(["primary", "secondary"]),
