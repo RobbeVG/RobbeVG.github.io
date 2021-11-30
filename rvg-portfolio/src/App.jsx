@@ -1,5 +1,5 @@
 import React from 'react'
-import Scene from "./Components/Scene"
+import Scene from "./components/Scene"
 import Page from "./Components/Page"
 import Home from './Components/Home/Home'
 
@@ -8,6 +8,7 @@ function App() {
     <Page>
       <Home />
       <Scene className='h-screen z-10'/>
+
     </Page>
   )
 }
