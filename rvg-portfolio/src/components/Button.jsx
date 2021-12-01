@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 const styles = {
-    base: "whitespace-nowrap flex-inline focus:outline-none transition ease-in-out duration-300",
+    base: "whitespace-nowrap focus:outline-none transition ease-in-out duration-300",
     padding: {
         rectangular: {
             small: "px-2 py-1",
@@ -22,10 +22,10 @@ const styles = {
     },
     roundness: {
         none: "rounded-none",
-        sm: "rounded-sm",
-        md: "rounded-md",
-        lg: "rounded-lg",
-        xl: "rounded-xl",
+        sm: "rounded-md",
+        md: "rounded-lg",
+        lg: "rounded-xl",
+        xl: "rounded-2xl",
         pill: "rounded-full"
     },
     text:{

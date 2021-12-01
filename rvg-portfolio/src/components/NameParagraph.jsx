@@ -1,8 +1,10 @@
 import React from 'react';
 import { Transition } from '@headlessui/react'
+import classnames from 'classnames'
+
+
 
 const textArray = ['Game Developer', 'Passionate Programmer', 'AI Enthousiast', 'Coffee Addict', 'Challenge Seeker']
-
 const timeUntilLeave = 1000;
 
 
@@ -26,7 +28,7 @@ class NameParagraph extends React.Component {
     {
         const text = textArray[this.state.textIdx]
         return (
-            <div className='flex justify-center mx-auto text-white'>
+            <div className={classnames(this.props.className, 'flex justify-center mx-auto text-white text-lg mt-4')}>
                 <div>-</div>
                 <div className='w-52'>
                     <Transition as='p'

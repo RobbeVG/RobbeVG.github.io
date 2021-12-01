@@ -1,14 +1,21 @@
 import React from 'react'
 import Scene from "./components/Scene"
-import Page from "./Components/Page"
-import Home from './Components/Home/Home'
+import Page from "./components/Page/Page"
+import Home from './components/Page/Home'
+import Projects from './components/Page/Projects'
+import AboutMe from './components/Page/About Me'
+
+//Classnames should only be used for:
+// the position property (folowed by)
+// the top, bottom, left, right properties
 
 function App() {  
   return (
     <Page>
-      <Home />
-      <Scene className='h-screen z-10'/>
-
+      <Scene className='fixed'/>
+      <Home className='relative'/>
+      <Projects className='relative'/>
+      <AboutMe className='relative'/>
     </Page>
   )
 }
