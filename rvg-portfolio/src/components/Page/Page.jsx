@@ -4,7 +4,7 @@ import NavBar from '../NavBar'
 function Page(props) {
     return (
         //Background
-        <div className='bg-gradient-to-t from-gray-900 to-primary'>
+        <div className='bg-gradient-to-b from-background-500 to-background-800'>
             <NavBar className='fixed'/>
             {props.children}
         </div>

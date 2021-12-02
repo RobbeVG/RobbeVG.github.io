@@ -6,8 +6,8 @@ const styles = {
     base: "",
     border: {
         variant: {
-            primary: '',
-            secondary: ''
+            primary: 'border-primary',
+            secondary: 'border-secondary'
         },
         thickness: {
             small: "border-2", 
@@ -44,7 +44,7 @@ Image.propTypes = {
     rounded: PropTypes.bool,
     bordered: PropTypes.oneOfType([
         PropTypes.exact({}), //Empty object
-        PropTypes.shape({thickness: PropTypes.oneOf(["small", "medium", "large"])})
+        PropTypes.shape({thickness: PropTypes.oneOf(["small", "medium", "large"]), variant: PropTypes.oneOf(["primary", "secondary"])})
     ])
 }
 

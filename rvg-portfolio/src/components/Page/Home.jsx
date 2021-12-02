@@ -10,9 +10,9 @@ import myselfAvatar from "../../Assets/Images/RobbeVG.jpg"
 function Home({className}) {
     return(
         <section className={classnames(className, 'h-screen overflow-auto text-center')}> 
-            <Image imagePath={myselfAvatar} size={"large"} border={{thickness: "medium"}} className='mx-auto my-10'/>
+            <Image imagePath={myselfAvatar} size={"large"} border={{thickness: "medium", variant: "secondary"}} className='mx-auto my-10'/>
             <h1 className='text-secondary text-5xl font-bold'>Robbe Van Gastel</h1>
-            <NameParagraph />
+            <NameParagraph className='mt-4'/>
             <div className='flex justify-evenly my-16'>
                 <Button shape="square" size="small" roundness="xl">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 " fill="none" viewBox="0 0 24 24" stroke="currentColor">

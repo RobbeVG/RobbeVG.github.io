@@ -17,8 +17,8 @@ const styles = {
         }
     },
     variant: {
-        primary: 'bg-blue-500 hover:bg-blue-800 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-white',
-        secondary: 'bg-gray-200 hover:bg-gray-800 focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 text-gray-900 hover:text-white',
+        primary: 'bg-primary text-white',
+        secondary: 'bg-secondary hover:text-white',
     },
     roundness: {
         none: "rounded-none",
