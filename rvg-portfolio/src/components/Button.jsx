@@ -17,8 +17,8 @@ const styles = {
         }
     },
     variant: {
-        primary: 'bg-primary text-white',
-        secondary: 'bg-secondary hover:text-white',
+        primary: 'bg-primary hover:bg-primary-300 text-white',
+        secondary: 'bg-secondary hover:bg-secondary-700 hover:text-white',
     },
     roundness: {
         none: "rounded-none",
@@ -34,6 +34,9 @@ const styles = {
         bold: "font-bold"
     }
 }
+
+//https://stackoverflow.com/questions/45046030/maintaining-href-open-in-new-tab-with-an-onclick-handler-in-react
+
 
 function Button({children, onClick, shape, size, variant, roundness, text, className}) {
     //Hover functionality in tailwind!
@@ -65,8 +68,9 @@ function Button({children, onClick, shape, size, variant, roundness, text, class
             className={classnames(
                 className, styles.base, padding, styles.variant[variant], 
                 styles.roundness[roundness], styles.text[text]
-            )}
+            )} 
             onClick={onClick}
+            
             >
             {children}
         </button>
