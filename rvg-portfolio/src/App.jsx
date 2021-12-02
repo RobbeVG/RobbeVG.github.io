@@ -1,22 +1,27 @@
-import React from 'react'
+import React, { Suspense, useRef } from 'react'
 import Scene from "./components/Page/Scene"
-import Page from "./components/Page/Page"
-import Home from './components/Page/Home'
-import Projects from './components/Page/Projects'
-import AboutMe from './components/Page/About Me'
+import Overlay from './components/Page/Overlay'
+
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls, OrthographicCamera } from '@react-three/drei'
+
+import Chessboard from './components/Models/Chessboard'
+import Box from './components/Models/Box'
 
 //Classnames should only be used for:
 // the position property (folowed by)
 // the top, bottom, left, right properties
 
 function App() {  
+  const overlay = useRef()
+  const caption = useRef()
+  const scroll = useRef(0)
+
   return (
-    <Page>
-      <Scene className='fixed'/>
-      <Home className='relative'/>
-      <Projects className='relative'/>
-      <AboutMe className='relative'/>
-    </Page>
+    <div className='bg-gradient-to-b from-background-500 to-background-800'>
+      <Scene overlay={overlay}/>
+      <Overlay ref={overlay} caption={caption} scroll={scroll} />
+    </div>
   )
 }
 

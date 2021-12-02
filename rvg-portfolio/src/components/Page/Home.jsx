@@ -16,7 +16,7 @@ const openInNewTab = (url) => {
 //Home alignment is done in App.jsx
 function Home({className}) {
     return(
-        <section className={classnames(className, 'h-screen overflow-auto text-center')}> 
+        <section className={classnames(className, 'w-screen h-screen overflow-auto text-center')}> 
             <Image imagePath={myselfAvatar} size={"large"} border={{thickness: "medium", variant: "secondary"}} className='mx-auto my-10'/>
             <h1 className='text-secondary text-5xl font-bold'>Robbe Van Gastel</h1>
             <NameParagraph className='mt-4'/>
@@ -29,7 +29,7 @@ function Home({className}) {
                         openInNewTab(`tel:${phoneNumber}`); return;
                     }
                     navigator.clipboard.writeText(phoneNumber)
-                    alert("Copied phonenumber to clipboard.")
+                    alert("Copied phonenumber to clipboard")
                     }
                 }>
                     <svg className="h-16 w-16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
