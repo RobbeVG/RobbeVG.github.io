@@ -1,5 +1,5 @@
 import React from 'react'
-import Scene from "./components/Scene"
+import Scene from "./components/Page/Scene"
 import Page from "./components/Page/Page"
 import Home from './components/Page/Home'
 import Projects from './components/Page/Projects'

@@ -63,8 +63,8 @@ function Button({children, onClick, shape, size, variant, roundness, text, class
     return (
         <button 
             className={classnames(
-                styles.base, padding, styles.variant[variant], 
-                styles.roundness[roundness], styles.text[text], className
+                className, styles.base, padding, styles.variant[variant], 
+                styles.roundness[roundness], styles.text[text]
             )}
             onClick={onClick}
             >

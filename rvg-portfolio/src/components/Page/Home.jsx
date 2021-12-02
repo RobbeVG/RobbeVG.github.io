@@ -4,14 +4,13 @@ import Image from "../Image";
 import Button from "../Button";
 import classnames from 'classnames'
 
-import { MailIcon, PhoneIcon } from '@heroicons/react/outline'
 import myselfAvatar from "../../Assets/Images/RobbeVG.jpg"
 
 //Home alignment is done in App.jsx
 function Home({className}) {
     return(
         <section className={classnames(className, 'h-screen overflow-auto text-center')}> 
-            <Image imagePath={myselfAvatar} size={Image.size.Large} rounded={true} className='mx-auto my-10'/>
+            <Image imagePath={myselfAvatar} size={"large"} border={{thickness: "medium"}} className='mx-auto my-10'/>
             <h1 className='text-secondary text-5xl font-bold'>Robbe Van Gastel</h1>
             <NameParagraph />
             <div className='flex justify-evenly my-16'>
