@@ -9,7 +9,7 @@ const MouseWireframeShaderMaterial = shaderMaterial(
 
     wireframeLensSize: 0.0,
     wireframeColor: new THREE.Color(1.0, 1.0, 1.0),
-    wireframeThickness: 0.5
+    wireframeThickness: 3.0
   },
   /*glsl*/` //Vertex Shader
     attribute vec3 center;
@@ -47,9 +47,13 @@ const MouseWireframeShaderMaterial = shaderMaterial(
 
         //Draw wireframe
         if (distSquared(vCoords, remapMouseCoords) < (wireframeLensSize * wireframeLensSize)){
+
             vec3 afwidth = fwidth( vCenter.xyz );
+
             vec3 edge3 = smoothstep( ( wireframeThickness - 1.0 ) * afwidth, wireframeThickness * afwidth, vCenter.xyz );
-            float edge = 1.0 - min( min( edge3.x, edge3.y ), edge3.z );
+
+            float edge = 1.0 - min( min( edge3.x, edge3.y ), edge3.z ) ;
+
             gl_FragColor.rgb = gl_FrontFacing ? vec3( 0.9, 0.9, 1.0 ) : vec3( 0.4, 0.4, 0.5 );
             gl_FragColor.a = edge;
         }
