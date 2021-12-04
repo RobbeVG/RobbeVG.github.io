@@ -2,15 +2,11 @@ import React, { Suspense, useRef } from 'react'
 import Scene from "./components/Page/Scene"
 import Overlay from './components/Page/Overlay'
 
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls, OrthographicCamera } from '@react-three/drei'
-
-import Chessboard from './components/Models/Chessboard'
-import Box from './components/Models/Box'
-
 //Classnames should only be used for:
 // the position property (folowed by)
 // the top, bottom, left, right properties
+
+//Overlay idea - https://codesandbox.io/s/camera-scroll-tu24h
 
 function App() {  
   const overlay = useRef()

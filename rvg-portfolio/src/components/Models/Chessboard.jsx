@@ -18,7 +18,7 @@ function Chessboard(props) {
     for (const [name, texture] of Object.entries(textures)) {
       texture.flipY = false;
       texture.magFiletr = THREE.LinearFilter
-      console.log(`Set ${name}-texture flipY to ${texture.flipY}`);
+      // console.log(`Set ${name}-texture flipY to ${texture.flipY}`);
     }    
     // console.log(textures.map(texture => texture.flipY));
 
@@ -30,6 +30,7 @@ function Chessboard(props) {
           geometry={nodes.Chessboard.geometry}
         >
     	    <meshStandardMaterial {...textures} />
+          
           {/* <meshNormalMaterial wireframe /> */}
 
         </mesh>
