@@ -10,8 +10,7 @@ function Chessboard(props) {
     const group = useRef()
     const { nodes } = useGLTF(path("Chess.glb"))
     const textures = useTexture({
-      map: textureName("Color.png"),
-      temp: textureName("Color.png")
+      map: textureName("Color.png")
     })
 
     // Textures are 

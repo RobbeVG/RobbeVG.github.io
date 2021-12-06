@@ -36,15 +36,17 @@ function Box(props) {
   ];
 
   const position = nodes.geometry_0_0.geometry.attributes.position;
+
   const centers = new Float32Array( position.count * 3 );
-
-  for ( let i = 0, l = position.count; i < l; i ++ ) {
-
+  
+  for ( let i = 0; i < position.count; i ++ ) {
+    
     vectors[ i % 3 ].toArray( centers, i * 3 );
-
+    
   }
+  
 
-  nodes.geometry_0_0.geometry.setAttribute( 'center', new THREE.BufferAttribute( centers, 3 ) );
+  nodes.geometry_0_0.geometry.setAttribute( 'baryCentric', new THREE.BufferAttribute( centers, 3 ) );
 
   return (
     <mesh
@@ -65,7 +67,8 @@ function Box(props) {
       attach="material" 
       viewportSize={new THREE.Vector2(size.width, size.height)} 
       wireframeLensSize={150.0}
-      wireframeColor={0x3fffff}
+      wireframeColorFront={0x20FBEB}
+      wireframeColorBack={0x04CFC0}
       />
 
       {/* <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} /> */}

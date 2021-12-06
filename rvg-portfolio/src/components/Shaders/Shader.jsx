@@ -8,28 +8,35 @@ const MouseWireframeShaderMaterial = shaderMaterial(
     viewportSize: new THREE.Vector2(0.0, 0.0),
 
     wireframeLensSize: 0.0,
-    wireframeColor: new THREE.Color(1.0, 1.0, 1.0),
+    wireframeColorFront: new THREE.Color(1.0, 1.0, 1.0),
+    wireframeColorBack: new THREE.Color(0.5, 0.5, 0.5),
     wireframeThickness: 3.0
   },
   /*glsl*/` //Vertex Shader
-    attribute vec3 center;
+    attribute vec3 baryCentric;
+    varying vec3 vBaryCentric;
+
     varying vec4 vPos;
-    varying vec3 vCenter;
 
     void main() {
-        vCenter = center;
+        vBaryCentric = baryCentric;
         vPos = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
         gl_Position = vPos;
     }
   `, 
   /*glsl*/` //Fragment Shader
+    //Shading properties
+
+
     varying vec4 vPos;
-    varying vec3 vCenter;
+    uniform vec2 mouseCoords; //Coords of mouse in [-1,1] 
+    uniform vec2 viewportSize; //Viewport size to map coordinates and to define pixel range (wireframeLensSize)
 
-    uniform vec2 mouseCoords; 
-    uniform vec2 viewportSize;
+    //Wireframe properties
+    varying vec3 vBaryCentric;
 
-    uniform vec3 wireframeColor;
+    uniform vec3 wireframeColorFront;
+    uniform vec3 wireframeColorBack;
     uniform float wireframeThickness;
     uniform float wireframeLensSize;
 
@@ -37,31 +44,35 @@ const MouseWireframeShaderMaterial = shaderMaterial(
         vec2 c = a-b;
         return dot(c,c);
     }
+
+    vec2 clipToScreen(vec2 a, vec2 screenSize) {
+      return (a * 0.5 + 0.5) * screenSize;
+    }
     
     void main() {
-        vec2 vCoords = vPos.xy;
-        vCoords /= vPos.w;
-        vCoords = (vCoords * 0.5 + 0.5) * viewportSize; // Remaps it to [0,1]
-
-        vec2 remapMouseCoords = (mouseCoords * 0.5 + 0.5) * viewportSize;
+        vec2 vCoords = clipToScreen(vPos.xy / vPos.w, viewportSize); //Getting position to clipspace (division) to screen space
+        vec2 remapMouseCoords = clipToScreen(mouseCoords, viewportSize); //Getting mouse position from clip to screen space
 
         //Draw wireframe
-        if (distSquared(vCoords, remapMouseCoords) < (wireframeLensSize * wireframeLensSize)){
-
-            vec3 afwidth = fwidth( vCenter.xyz );
-
-            vec3 edge3 = smoothstep( ( wireframeThickness - 1.0 ) * afwidth, wireframeThickness * afwidth, vCenter.xyz );
-
-            float edge = 1.0 - min( min( edge3.x, edge3.y ), edge3.z ) ;
-
-            gl_FragColor.rgb = gl_FrontFacing ? vec3( 0.9, 0.9, 1.0 ) : vec3( 0.4, 0.4, 0.5 );
-            gl_FragColor.a = edge;
+        if (distSquared(vCoords, remapMouseCoords) < (wireframeLensSize * wireframeLensSize)){ // Checking distance squared factor
+            //Draw wireframe in circle
+            vec3 afwidth = fwidth( vBaryCentric );
+            vec3 edge3 = smoothstep( ( wireframeThickness - 1.0 ) * afwidth, wireframeThickness * afwidth, vBaryCentric.xyz );
+            float edge = 1.0 - min( min( edge3.x, edge3.y ), edge3.z );
+            gl_FragColor.rgb = gl_FrontFacing ? wireframeColorFront : wireframeColorBack;
+            gl_FragColor.a = edge; //Also influences depth test!
         }
         else{
-            gl_FragColor = vec4( 0.0, 0.0, 0.0, 1.0 );
+            //Shade as normal
+            gl_FragColor = vec4( vCoords, 0.0, 1.0 ); 
         }
     }
-  `
+  `,
+  (material) => {
+    material.side = THREE.DoubleSide;
+    material.alphaToCoverage = true;
+  },
+
 )
 
 extend({ MouseWireframeShaderMaterial })
