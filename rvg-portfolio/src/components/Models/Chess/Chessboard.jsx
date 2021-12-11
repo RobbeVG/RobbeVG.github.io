@@ -28,11 +28,11 @@ function Chessboard(props) {
           receiveShadow
           geometry={nodes.Chessboard.geometry}
         >
-    	    <meshStandardMaterial {...textures} />
-          
-          {/* <meshNormalMaterial wireframe /> */}
-
+    	    <meshStandardMaterial {...textures} />          
         </mesh>
+        <group>
+          {props.children}
+        </group>
       </group>
     )
   }

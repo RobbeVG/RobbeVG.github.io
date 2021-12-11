@@ -15,7 +15,7 @@ function Scene({ overlay, className }) {
         <div className={classnames(className, 'w-full h-screen')}>
             {/* anti-alliasing is set to true by default */}
             <Canvas 
-                orthographic camera={{ zoom:15, position: [0, 45, 35] }}
+                orthographic camera={{ zoom:15, position: [0, 10, 0] }}
                 onCreated={(state) => {
                     state.events.connect(overlay.current); 
                 }}
@@ -25,9 +25,30 @@ function Scene({ overlay, className }) {
                 <ambientLight />
                 <pointLight position={[10, 10, 10]} />
                 <Suspense fallback={null}>
-                    <Chessboard position={[0, 0, 35]} rotation={[0, Math.PI/4, 0]} />
-                    <Cup/>
-                    <Fox/>
+                    <Chessboard>
+                        <group position={[0, 0.333333, 0]}>
+                            <Cup position={[-19.25, 0, 13.75]}/>
+                            <Cup position={[-13.75, 0, 13.75]}/>
+                            <Cup position={[-8.25, 0, 13.75]}/>
+                            <Cup position={[-2.75, 0, 13.75]}/>
+                            <Cup position={[2.75, 0, 13.75]}/>
+                            <Cup position={[8.25, 0, 13.75]}/>
+                            <Cup position={[13.75, 0, 13.75]}/>
+                            <Cup position={[19.25, 0, 13.75]}/>
+                        </group>
+                        <group position={[0, 0.333333, 0]} rotation={[0, Math.PI, 0]}>
+                            <Cup position={[-19.25, 0, 13.75]}/>
+                            <Cup position={[-13.75, 0, 13.75]}/>
+                            <Cup position={[-8.25, 0, 13.75]}/>
+                            <Cup position={[-2.75, 0, 13.75]}/>
+                            <Cup position={[2.75, 0, 13.75]}/>
+                            <Cup position={[8.25, 0, 13.75]}/>
+                            <Cup position={[13.75, 0, 13.75]}/>
+                            <Cup position={[19.25, 0, 13.75]}/>
+                        </group>
+
+                    </Chessboard>
+                    {/* <Fox/> */}
                 </Suspense>
             </Canvas>
         </div>
