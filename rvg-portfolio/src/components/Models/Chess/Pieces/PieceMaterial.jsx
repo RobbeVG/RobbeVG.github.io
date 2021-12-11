@@ -3,7 +3,26 @@ import Material from 'component-material'
 import { useRef } from 'react';
 import * as THREE from 'three'
 
+//barycentric coordinates don't keep track of index! -> TODO
+//Result: More memory usage...
+//Note: Only updating the barycentric coordinates to non indexed doesn't work..
+function createCompatibleGeometry(geometry){
+    const newGeometry = geometry.index === null? geometry : geometry.toNonIndexed(); //Hot reload compatible!
 
+    const vectors = [
+        new THREE.Vector3( 1, 0, 0 ),
+        new THREE.Vector3( 0, 1, 0 ),
+        new THREE.Vector3( 0, 0, 1 )
+      ];
+    
+      const position = newGeometry.attributes.position;
+      const barycentrics = new Float32Array( position.count * 3 );
+      for ( let i = 0; i < position.count; i ++ ) {
+          vectors[ i % 3 ].toArray( barycentrics, i * 3 );
+      }
+      newGeometry.setAttribute( 'baryCentric', new THREE.BufferAttribute( barycentrics, 3 ) );
+    return newGeometry;
+}
 
 function PieceMaterial({materialArgs}) {
     const refShader = useRef();
@@ -89,3 +108,6 @@ function PieceMaterial({materialArgs}) {
   }
 
 export default PieceMaterial;
+export {
+    createCompatibleGeometry
+}

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-const path = (type) => `src/Assets/Models/Chessboard/${type}`
+const path = (type) => `src/Assets/Models/Chess/${type}`
 
 function ChessboardWithMaterial(props) {
     const group = useRef()

@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useGLTF, useTexture } from '@react-three/drei'
 import * as THREE from 'three';
 
-const path = (type) => `src/Assets/Models/Chessboard/${type}`
+const path = (type) => `src/Assets/Models/Chess/${type}`
 const textureName = (type) => `${path("T_Chessboard_")}${type}`
 
 
