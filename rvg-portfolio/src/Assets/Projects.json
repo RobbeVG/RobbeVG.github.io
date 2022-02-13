@@ -1,0 +1,46 @@
+{
+    "projects": [
+        {
+            "name": "Wrong House Fool",
+            "tags": ["Unreal Engine", "c++"],
+            "image" : "WrongHouseFool.png",
+            "description": "Wrong House, FOOL! is a 2v2 couch Co-Op where four thieves try to rob the same house, they need to avoid grandma or they'll get caught! Steal items, mess with the enemy team and when the sun goes up ,be the team that has the best loot!"
+        },
+        {
+            "name": "Eagle Eye",
+            "tags": ["Unity", "c#"],
+            "image" : "eagleEye.jpg",
+            "description": "Eagle eye was a very fun project that I build together with a friend. This game was made for the Tobii C4 eye-tracking device where you had to look at certain pray for the eagle to attack. For a very short time span we created a nice looking game that demonstrated a use case of the eye-tracker device."
+        },
+        {
+            "name": "Waking Up",
+            "tags": ["Unreal Engine", "Blueprints", "3DsMax"],
+            "image" : "unrealLevel.jpg",
+            "description": "In my second year that I was studying game development we received the assignment to create a sci-fi looking level. As I’m not a big fan of sci-fi I created a more futuristic looking level. The level was designed as a traveling spaceship where people were incubated until they arrive at their destination. One of them woke up too early. Artsy stuff isn’t really my cup of tea but I’m still pleased with the result."
+        },
+        {
+            "name": "Raytracer",
+            "tags": ["C++", "SDL"],
+            "image" : "raytracer.jpg",
+            "description": "This raytracer was a nice project to work on. A raytracer is able to visualize objects onto the screen by calculating the light value of each ray that is cast for each pixel. As this is now a hot topic in the gaming industry, it was a good learning foundation. I learned several techniques about shading and how rays intersect with certain shapes."
+        },
+        {
+            "name": "Rasterizer",
+            "tags": ["C++", "SDL", "DirectX 11"],
+            "image" : "rasterizer.jpg",
+            "description": "This rasterizer can visualise objects by projecting those objects on the screen and colouring the pixels inside of that object. With many shading techniques it is definitely not easy to make. Still I achieved what I wanted and created a working rasterizer."
+        },
+        {
+            "name": "2D background",
+            "tags": ["Photoshop"],
+            "image" : "2dBackground.jpg",
+            "description": "In my first year of game development we got an assignment to create a 2D-background with all the techniques we were learned. I remember a lot of work was going in to this, but I was so pleased with the result."
+        },
+        {
+            "name": "My portfolio",
+            "tags": ["CSS", "HTML", "React", "Tailwind"],
+            "image" : "this.png",
+            "description": "This portfolio you are watching right now was the first website I ever developed. I had no experience with web development before making it. It was my personal goal to make my own website from scratch. I'm very proud of what I achieved without any previous knowledge at all!"
+        }
+    ]
+}

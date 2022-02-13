@@ -14,7 +14,7 @@ const openInNewTab = (url) => {
   }
 
 //Home alignment is done in App.jsx
-function Home({className}) {
+function Home({ className }) {
     return(
         <section className={classnames(className, 'w-screen h-screen overflow-auto text-center')}> 
             <Image imagePath={myselfAvatar} size={"large"} border={{thickness: "medium", variant: "secondary"}} className='mx-auto my-10'/>

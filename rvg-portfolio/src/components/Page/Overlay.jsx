@@ -16,10 +16,9 @@ const Overlay = forwardRef(({ caption, scroll }, ref) => (
     >
         {/* TODO DELETE */}
         <span className='fixed text-white' ref={caption}>0.00</span>
-        
         <Home className='relative'/>
-        <Projects className='relative'/>
-        <AboutMe className='relative'/>
+        <Projects className='mt-[100vh] relative'/>
+        <AboutMe className='mt-[50vh] relative'/>
     </div>))
 
 export default Overlay;

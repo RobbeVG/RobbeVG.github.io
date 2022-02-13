@@ -2,6 +2,9 @@ import React, { Suspense, useRef } from 'react'
 import Scene from "./components/Page/Scene"
 import Overlay from './components/Page/Overlay'
 
+import Projects from './components/Page/Projects';
+
+
 //Classnames should only be used for:
 // the position property (folowed by)
 // the top, bottom, left, right properties
