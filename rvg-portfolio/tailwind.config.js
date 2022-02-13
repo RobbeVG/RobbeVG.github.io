@@ -1,8 +1,7 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./src/**/*.{html,vue,js,ts,jsx,tsx}'],
   theme: {
     extend:{
       colors: {
@@ -44,14 +43,20 @@ module.exports = {
         },
         tertiary: '#ecc94b'
       },
+      transitionProperty: {
+        'height': 'height',
+        'spacing': 'margin, padding'
+      },
       fontFamily: {
         'sans': ['Roboto', 'sans-serif'],
         'mono': ['Roboto Mono', 'monospace']
-      },
+      }
     }
   },
   variants: {
-    extend: {},
+    extend: {
+      lineClamp: ["hover"]
+    },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
 }

@@ -3,12 +3,12 @@ import { useGLTF, useTexture } from '@react-three/drei'
 
 import PieceMaterial, { createCompatibleGeometry } from "./PieceMaterial"
 
-const path = (type) => `src/Assets/Models/Chess/Pieces/Pawn/${type}`
-const textureName = (type) => `${path("T_Cup_")}${type}`
+const path = (type) => `src/Assets/Models/Chess/Pieces/Knight/${type}`
+const textureName = (type) => `${path("T_Pacman_")}${type}`
 
-function Cup(props) {
+function Pacman(props) {
   const group = useRef()
-  const { nodes } = useGLTF(path("Cup.glb"))
+  const { nodes } = useGLTF(path("Pacman.glb"))
   const textures = useTexture({
     map: textureName("Color.jpg")
   })
@@ -18,14 +18,14 @@ function Cup(props) {
     // console.log(`Set ${name}-texture flipY to ${texture.flipY}`);
   }
 
-  nodes.Cup.geometry = createCompatibleGeometry(nodes.Cup.geometry)
+  nodes.Pacman.geometry = createCompatibleGeometry(nodes.Pacman.geometry)
 
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Cup.geometry}
+        geometry={nodes.Pacman.geometry}
       >
         <PieceMaterial materialArgs={textures}/>
       </mesh>
@@ -33,7 +33,7 @@ function Cup(props) {
   )
 }
 
-useGLTF.preload(path("Cup.glb"))
+useGLTF.preload(path("Pacman.glb"))
 useTexture.preload(textureName("Color.jpg"))
 
-export default Cup
+export default Pacman

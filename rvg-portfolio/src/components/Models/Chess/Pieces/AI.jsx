@@ -3,12 +3,12 @@ import { useGLTF, useTexture } from '@react-three/drei'
 
 import PieceMaterial, { createCompatibleGeometry } from "./PieceMaterial"
 
-const path = (type) => `src/Assets/Models/Chess/Pieces/Pawn/${type}`
-const textureName = (type) => `${path("T_Cup_")}${type}`
+const path = (type) => `src/Assets/Models/Chess/Pieces/Bishop/${type}`
+const textureName = (type) => `${path("T_AI_")}${type}`
 
-function Cup(props) {
+function AI(props) {
   const group = useRef()
-  const { nodes } = useGLTF(path("Cup.glb"))
+  const { nodes } = useGLTF(path("AI.glb"))
   const textures = useTexture({
     map: textureName("Color.jpg")
   })
@@ -18,14 +18,14 @@ function Cup(props) {
     // console.log(`Set ${name}-texture flipY to ${texture.flipY}`);
   }
 
-  nodes.Cup.geometry = createCompatibleGeometry(nodes.Cup.geometry)
+  nodes.AI.geometry = createCompatibleGeometry(nodes.AI.geometry)
 
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Cup.geometry}
+        geometry={nodes.AI.geometry}
       >
         <PieceMaterial materialArgs={textures}/>
       </mesh>
@@ -33,7 +33,7 @@ function Cup(props) {
   )
 }
 
-useGLTF.preload(path("Cup.glb"))
+useGLTF.preload(path("AI.glb"))
 useTexture.preload(textureName("Color.jpg"))
 
-export default Cup
+export default AI

@@ -9,6 +9,8 @@ import ChessboardWithMaterial from '../Models/Chess/ChessboardWithMaterial'
 //Models
 import Chessboard from '../Models/Chess/Chessboard'
 import Cup from '../Models/Chess/Pieces/Cup'
+import Pacman from '../Models/Chess/Pieces/Pacman'
+import AI from '../Models/Chess/Pieces/AI'
 
 function Scene({ overlay, className }) {
     return (
@@ -35,6 +37,10 @@ function Scene({ overlay, className }) {
                             <Cup position={[8.25, 0, 13.75]}/>
                             <Cup position={[13.75, 0, 13.75]}/>
                             <Cup position={[19.25, 0, 13.75]}/>
+                            <Pacman position={[13.75, 0, 19.25]}/>
+                            <Pacman position={[-13.75, 0, 19.25]}/>
+                            <AI position={[8.25, 0, 19.25]}/>
+                            <AI position={[-8.25, 0, 19.25]} rotation={[0, Math.PI, 0]}/>
                         </group>
                         <group position={[0, 0.333333, 0]} rotation={[0, Math.PI, 0]}>
                             <Cup position={[-19.25, 0, 13.75]}/>
@@ -45,6 +51,10 @@ function Scene({ overlay, className }) {
                             <Cup position={[8.25, 0, 13.75]}/>
                             <Cup position={[13.75, 0, 13.75]}/>
                             <Cup position={[19.25, 0, 13.75]}/>
+                            <Pacman position={[13.75, 0, 19.25]}/>
+                            <Pacman position={[-13.75, 0, 19.25]}/>
+                            <AI position={[8.25, 0, 19.25]}/>
+                            <AI position={[-8.25, 0, 19.25]} rotation={[0, Math.PI, 0]}/>
                         </group>
 
                     </Chessboard>
